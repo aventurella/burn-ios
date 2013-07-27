@@ -16,6 +16,10 @@
 		23229A241793889600CCD540 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 23229A231793889600CCD540 /* Default.png */; };
 		23229A261793889600CCD540 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23229A251793889600CCD540 /* Default@2x.png */; };
 		23229A281793889600CCD540 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23229A271793889600CCD540 /* Default-568h@2x.png */; };
+		23229A2F179388AF00CCD540 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23229A2E179388AF00CCD540 /* GameKit.framework */; };
+		23C4C08617A3250500B5C004 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C4C08517A3250500B5C004 /* NSData+AES256.m */; };
+		23C4C08B17A3273700B5C004 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C4C08A17A3273700B5C004 /* NSData+Base64.m */; };
+		23C4C08E17A33E3700B5C004 /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C4C08D17A33E3700B5C004 /* NSData+Hex.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,14 @@
 		23229A231793889600CCD540 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		23229A251793889600CCD540 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		23229A271793889600CCD540 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		23229A2E179388AF00CCD540 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		23C4C08417A3250500B5C004 /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
+		23C4C08517A3250500B5C004 /* NSData+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES256.m"; sourceTree = "<group>"; };
+		23C4C08717A3255600B5C004 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
+		23C4C08917A3273700B5C004 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		23C4C08A17A3273700B5C004 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		23C4C08C17A33E3700B5C004 /* NSData+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Hex.h"; sourceTree = "<group>"; };
+		23C4C08D17A33E3700B5C004 /* NSData+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Hex.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23229A2F179388AF00CCD540 /* GameKit.framework in Frameworks */,
 				23229A121793889600CCD540 /* UIKit.framework in Frameworks */,
 				23229A141793889600CCD540 /* Foundation.framework in Frameworks */,
 				23229A161793889600CCD540 /* CoreGraphics.framework in Frameworks */,
@@ -68,6 +81,8 @@
 		23229A101793889600CCD540 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				23C4C08717A3255600B5C004 /* libcommonCrypto.dylib */,
+				23229A2E179388AF00CCD540 /* GameKit.framework */,
 				23229A111793889600CCD540 /* UIKit.framework */,
 				23229A131793889600CCD540 /* Foundation.framework */,
 				23229A151793889600CCD540 /* CoreGraphics.framework */,
@@ -81,6 +96,12 @@
 				23229A201793889600CCD540 /* BRNAppDelegate.h */,
 				23229A211793889600CCD540 /* BRNAppDelegate.m */,
 				23229A181793889600CCD540 /* Supporting Files */,
+				23C4C08417A3250500B5C004 /* NSData+AES256.h */,
+				23C4C08517A3250500B5C004 /* NSData+AES256.m */,
+				23C4C08917A3273700B5C004 /* NSData+Base64.h */,
+				23C4C08A17A3273700B5C004 /* NSData+Base64.m */,
+				23C4C08C17A33E3700B5C004 /* NSData+Hex.h */,
+				23C4C08D17A33E3700B5C004 /* NSData+Hex.m */,
 			);
 			path = Burn;
 			sourceTree = "<group>";
@@ -167,6 +188,9 @@
 			files = (
 				23229A1E1793889600CCD540 /* main.m in Sources */,
 				23229A221793889600CCD540 /* BRNAppDelegate.m in Sources */,
+				23C4C08617A3250500B5C004 /* NSData+AES256.m in Sources */,
+				23C4C08B17A3273700B5C004 /* NSData+Base64.m in Sources */,
+				23C4C08E17A33E3700B5C004 /* NSData+Hex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +235,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = Burn;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -235,6 +260,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = Burn;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -246,6 +272,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Burn/Burn-Prefix.pch";
 				INFOPLIST_FILE = "Burn/Burn-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -257,6 +287,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Burn/Burn-Prefix.pch";
 				INFOPLIST_FILE = "Burn/Burn-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -281,6 +315,7 @@
 				23229A2D1793889600CCD540 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

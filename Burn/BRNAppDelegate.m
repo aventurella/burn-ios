@@ -7,6 +7,12 @@
 //
 
 #import "BRNAppDelegate.h"
+#import "NSData+AES256.h"
+#import "NSData+Base64.h"
+#import "NSData+Hex.h"
+#import <GameKit/GameKit.h>
+#import <CommonCrypto/CommonKeyDerivation.h>
+#import <CommonCrypto/CommonCryptor.h>
 
 @implementation BRNAppDelegate
 
@@ -16,6 +22,67 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    //NSString * key = @"33c86029e4681c70fff004303173083a62219d95436f5bcb0f334dab836b2a83";
+    NSString * plainData = @"p0g0spaws";
+    NSString * password = @"m4Ry74d411++l3l4m13";
+    NSString * salt = @"48c875f402b45bc7";
+    NSString * outText;
+
+
+    uint8_t key[kCCKeySizeAES256] = {0};
+    
+    CCKeyDerivationPBKDF(kCCPBKDF2,
+                         [password UTF8String],
+                         [password lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+                         (const uint8_t*)[salt UTF8String],
+                         [salt lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+                         kCCPRFHmacAlgSHA256,
+                         100000,
+                         key,
+                         kCCKeySizeAES256);
+    
+    uint8_t hmac[CC_SHA256_DIGEST_LENGTH] = {0};
+    
+    CCHmac(kCCHmacAlgSHA256,
+           key,
+           kCCHmacAlgSHA256,
+           [plainData UTF8String],
+           [plainData lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
+           hmac);
+    
+    NSData *hmacData = [NSData dataWithBytes: hmac length: CC_SHA256_DIGEST_LENGTH];
+    NSString * data = [hmacData hexadecimalString];
+    NSLog(@"%@", data);
+    // 24856dc171be96209c7cfc3f3b0f78e22faeeea3db616b7fa087dcbd846da5cb
+    // 24856dc171be96209c7cfc3f3b0f78e22faeeea3db616b7fa087dcbd846da5cb
+    // e61fffc16f57ddfe2206cca983d8653b3d6e0d1eaa1713eaa940077645e6226f
+
+    __weak GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    
+    localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error){
+        if (viewController != nil)
+        {
+            NSLog(@"NEEDS AUTH");
+            [self.window addSubview:viewController.view];
+        }
+        else if (localPlayer.isAuthenticated)
+        {
+            NSLog(@"PLAYER AUTHENTICATED");
+            NSLog(@"%@", localPlayer.playerID);
+            NSLog(@"%@", localPlayer.displayName);
+            NSLog(@"%@", localPlayer.alias);
+            //NSString * input = localPlayer.alias;
+            //NSData *data = [input dataUsingEncoding:NSUTF8StringEncoding];
+            //NSString * b64 = [[data AES256EncryptWithKey:key] base64EncodedString];
+            //NSLog(@"%@", b64);
+        }
+        else
+        {
+            NSLog(@"No GC");
+            //[self disableGameCenter];
+        }
+    };
+        
     return YES;
 }
 
